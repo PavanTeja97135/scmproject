@@ -49,7 +49,7 @@ export default function FacultyCourseAllocationForm() {
         `${config.url}/allocatecourse`,
         formData
       );
-      alert(response.data); // Show success message
+      alert(response.data);
       setError("");
     } catch (error) {
       setError(error.response.data);
@@ -58,7 +58,7 @@ export default function FacultyCourseAllocationForm() {
 
   return (
     <div>
-      <h2 align="center">Allocate Faculty to Course</h2>
+      <h1>Allocate Faculty to Course</h1>
       {error && <h4>{error}</h4>}
       <form onSubmit={handleSubmit}>
         <div>

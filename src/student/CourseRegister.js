@@ -21,7 +21,7 @@ export default function CourseRegister() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${config.url}5/registercourse`, formData);
+      const response = await axios.post(`${config.url}/registercourse`, formData);
       if (response.status === 200) {
         setFormData({
           coursecode: '',

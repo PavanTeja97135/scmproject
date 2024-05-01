@@ -12,7 +12,7 @@ import AddFaculty from './AddFaculty';
 import AddCourse from './AddCourse';
 import ViewCourses from './ViewCourses';
 import AllocateCourse from './AllocateCourse';
-//import ViewAllocateCourse from './ViewAllocateCourse';
+import ViewAllocateCourse from './ViewAllocateCourse';
 
 
 const homeIcon = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCf4lREb3S2e81IIHpMPU7Wk1R4HDvWhbIqld2TT8_Gg&s';
@@ -71,7 +71,7 @@ export default function AdminNavBar() {
               <Link to="/addcourse">Add Course</Link>
               <Link to="/viewcourses">View Courses</Link>
               <Link to="/allocatecourse">Allocate Course</Link>
-              <Link to="/viewallocatecourses">View Allocated Courses</Link>
+              <Link to="/viewcoursefacultyallocation">View Allocated Courses</Link>
             </div>
           </li>
           <li>
@@ -90,7 +90,7 @@ export default function AdminNavBar() {
         <Route path="/addfaculty" element={<AddFaculty/>} exact />
         <Route path="/addcourse" element={<AddCourse/>} exact />
         <Route path="/allocatecourse" element={<AllocateCourse/>} exact/>
-        {/* <Route path="/viewallocatecourses" element={<ViewAllocateCourse/>} exact/> */}
+        <Route path="/viewcoursefacultyallocation" element={<ViewAllocateCourse/>} exact/>
       </Routes>
     </div>
   );

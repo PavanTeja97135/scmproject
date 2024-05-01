@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import config from "../config";
-export default function ViewCourseFacultyMap() {
+export default function ViewAllocationCourse() {
   const [allocations, setAllocations] = useState([]);
   const [error, setError] = useState("");
 
@@ -28,9 +28,8 @@ export default function ViewCourseFacultyMap() {
       <table border={1} align="center" style={{ width: "auto", height: "auto" }}>
         <thead>
           <tr>
-            <th>Course Title</th>
-            <th>Faculty Name</th>
-            <th>Section Code</th>
+            <th>Course code</th>
+            <th>Faculty id</th>
           </tr>
         </thead>
         <tbody>
@@ -39,7 +38,6 @@ export default function ViewCourseFacultyMap() {
               <tr key={index}>
                 <td>{allocation.course}</td>
                 <td>{allocation.faculty}</td>
-                <td>{allocation.section}</td>
               </tr>
             ))
           ) : (

@@ -1,64 +1,70 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, {useState,useEffect} from 'react'
+import axios from "axios";
 import config from '../config'
 
-export default function ViewAssignments() {
-  const [assignment, setAssignments] = useState([]);
+export default function ViewAssignment() {
+    const [assignment, setAssignment] = useState([]);
 
-  const fetchAssignments = async () => {
-    try {
-      const response = await axios.get(`${config.url}/viewassignments`);
-      setAssignments(response.data);
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
-
-  useEffect(() => {
-    fetchAssignments();
-  }, []);
-
-  return (
-    <div>
-      <h1 align="center">Assignments</h1>
-      <table border={1} align="center">
-        <thead>
-          <tr>
-            <th>Course Code</th>
-            <th>Course Title</th>
-            <th>Date</th>
-            <th>Due Date</th>
-            <th>Files</th>
-
-
-            {/* Add more table headers if needed */}
-          </tr>
-        </thead>
-        <tbody>
-          {assignment.length > 0 ? (
-            assignment.map((assignment, index) => (
-              <tr key={index}>
-                <td>{assignment.courseCode}</td>
-                <td>{assignment.courseTitle}</td>
-                <td>{assignment.date}</td>
-                <td>{assignment.dueDate}</td>
-                <td>
-  {assignment.file.endsWith('.jpg') || assignment.file.endsWith('.jpeg') || assignment.file.endsWith('.png') ? (
-    <img src={ `${config.url}/assignmentimage/${assignment.file}`} alt="Assignment" style={{ width: '250px', height: '250px' }} />
-  ) : (
-    <a href={`${config.url}/assignmentimage/${assignment.file}`}>Click Here</a>
-  )}
-</td>
-
-              </tr>
-            ))
-          ) : (
+    const fetchAssignment = async () => {
+      try {
+        const response = await axios.get(`${config.url}/viewassignment`);
+        setAssignment(response.data);
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
+  
+    useEffect(() => {
+      fetchAssignment();
+    }, []);
+  
+    
+  
+    return (
+      <div style={{ textAlign: "center" }}>
+        <h1>Courses</h1>
+  
+        <table
+          border={1}
+          align="center"
+          style={{ width: "auto", height: "auto" }}
+        >
+          <thead>
             <tr>
-              <td colSpan="4" align="center">No assignments found</td>
+              <th>Name of the Assignment</th>
+              <th>Course Code</th>
+              <th>Course Title</th>
+              <th>Deadline</th>
+              <th>Assignment</th>
             </tr>
-          )}
-        </tbody>
-      </table>
-    </div>
-  );
+          </thead>
+          <tbody>
+            {Array.isArray(assignment) && assignment.length > 0 ? (
+              assignment.map((assignment, index) => (
+                <tr key={index}>
+                  <td>{assignment.name}</td>
+                  <td>{assignment.coursecode}</td>
+                  <td>{assignment.coursetitle}</td>
+                  <td>{assignment.deadline}</td>
+                  
+                  
+                  <td>
+    {assignment.file.endsWith('.jpg') || assignment.file.endsWith('.jpeg') || assignment.file.endsWith('.png') ? (
+      <img src={`${config.url}/assignmentfile/${assignment.file}`} alt="Event" style={{ width: '250px', height: '250px' }} />
+    ) : (
+      <a href={`${config.url}/assignmentfile/${assignment.file}`}>Click Here</a>
+    )}
+  </td>
+                  
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="6">Data Not Found</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+    );
 }

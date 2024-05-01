@@ -61,7 +61,7 @@ export default function AddCourse()
       <form onSubmit={handleSubmit}>
         <div>
           <label className="white-label">Course Code</label>
-          <input type="number" id="coursecode" value={formData.coursecode} onChange={handleChange}  required />
+          <input type="string" id="coursecode" value={formData.coursecode} onChange={handleChange}  required />
         </div>
         <div>
           <label className="white-label">Course Title</label>

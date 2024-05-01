@@ -11,7 +11,7 @@ const MyCourses = () => {
           const courseData = [
             { courseCode: '22SDCS01A', courseTitle: 'MERN STACK', sectionNumber: '32' },
             { courseCode: '22MT2004', courseTitle: 'PYTHON', sectionNumber: '14' },
-            // Add more courses as needed
+            
           ];
           resolve(courseData);
         }, 1000); // Simulating delay of 1 second
